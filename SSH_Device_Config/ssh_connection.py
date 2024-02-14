@@ -23,7 +23,7 @@ def ssh_connection(ip):
             commands = file.readlines()
         
         for command in commands:
-            connection.send(command)
+            connection.send(command + "\n")
             time.sleep(2)
 
         router_output = connection.recv(65535)
@@ -35,7 +35,7 @@ def ssh_connection(ip):
         
         print(str(router_output) + "\n")
         session.close()
-        
+
     except paramiko.AuthenticationException:
         print(f"invalid username or password check again")
         print(f"closing program bye!!")
